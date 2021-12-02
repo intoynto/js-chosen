@@ -1,0 +1,330 @@
+$select-bg:white!default;
+$select-boxshadow-color:#BFDEFF!default;
+$select-border-radius:0.25rem!default;
+
+$select-focus-border-type:solid!default;
+$select-focus-border-width:1px!default;
+$select-focus-border-color:lighten(blue, 25%) !default;
+
+$select-boxshadow-offset-x:0!default;
+$select-boxshadow-offset-y:0!default;;
+$select-boxshadow-blur-radius:0!default;;
+$select-boxshadow-spread-radius:3px!default;
+
+$select-border-color:#ced4da!default;
+
+$select-arrow-color:#4B4B4B!default;
+$select-arrow-bg:transparent!default;
+$select-arrow-border-type:solid!default;
+$select-arrow-border-width:1px!default;
+$select-arrow-border-color:#ced4da !default;
+
+$select-arrow-hover-bg:#EBEBEB!default;
+$select-arrow-hover-color:#4D4D4D;
+
+$select-dropdown-line-bg:transparent!default;
+$select-dropdown-absolute-width-append:(2 * $select-focus-border-width);
+
+$select-dropdown-active-bg:#F8F8F8;
+$select-dropdown-hover-bg:#EFEFEF;
+
+$select-dropdown-item-padding-y:5px !default;
+$select-dropdown-item-padding-x:6px !default;
+$select-dropdown-item-border-color:#EFEFEF !default;
+
+.Select {
+    border: solid 1px $select-border-color;
+    position: relative;
+    z-index: 1;
+    border-radius: $select-border-radius;
+}
+
+.SelectInput{
+    background: transparent;
+    padding-left: 0;   
+    outline: none;
+}
+
+.SelectAreas{
+    display: flex;
+    position: relative;
+    border-radius: $select-border-radius;
+}
+
+.SelectControls{
+    flex: auto;
+}
+
+.SelectArrows{
+    display: flex;
+}
+
+.SelectConta {
+    position: relative;
+}
+
+.SelectSelect{
+    position: absolute;
+    //top: -64px;
+    display: none;
+}
+
+.SelectArrow{
+    display: flex;
+    border-left: $select-arrow-border-type $select-arrow-border-width $select-arrow-border-color;
+    align-items: center;
+    user-select: none;
+    color:$select-arrow-color;
+    background: $select-arrow-bg;
+    span{
+        flex: auto;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    &:hover{
+        text-decoration: none;
+        background:$select-arrow-hover-bg;
+        color:$select-arrow-hover-color;
+    }
+    &.hidden{
+        display: none;
+    }
+}
+
+.SelectDropDown {
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;
+    position: absolute;
+    background-color: $select-bg;
+    border: $select-focus-border-type $select-focus-border-width $select-border-color;    
+    box-shadow: $select-boxshadow-offset-x $select-boxshadow-offset-y $select-boxshadow-blur-radius $select-boxshadow-spread-radius $select-boxshadow-color;
+    border-radius: 3px;
+    width:calc(100% - -2px);
+    left: -1px;
+    z-index: 1;
+    ul,li{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    a{
+        display: block;
+        padding: $select-dropdown-item-padding-y $select-dropdown-item-padding-x;
+        background-color: transparent;
+        border-bottom: solid 1px $select-dropdown-item-border-color;        
+    }
+    a.hover{
+        background:$select-dropdown-active-bg;
+    }
+    a:hover
+    {
+        background: $select-dropdown-hover-bg;
+        text-decoration: none;
+    }
+}
+
+.SelectDropDownLine{
+    position: absolute;
+    overflow: hidden;
+    content: "\0020";
+    height: 4px;
+    width: calc(100% + #{$select-dropdown-absolute-width-append}); 
+    background-color: $select-bg;
+    border-left:$select-focus-border-type $select-focus-border-width $select-focus-border-color;
+    border-right:$select-focus-border-type $select-focus-border-width $select-focus-border-color;
+    z-index: 2;
+    left:#{-$select-focus-border-width};
+    margin-top: -3px;
+    display: none;
+}
+
+.SelectAria{
+    width: 10px;    
+    overflow:hidden;
+    white-space: nowrap;
+    display: block;
+    opacity: 0;
+}
+
+.SelectValues{
+    padding-left: 6px;    
+    display: flex;
+    position: relative;
+}
+
+.Select.single{      
+    .SelectInput{
+        position: relative;
+        z-index: 1;  
+        flex: auto;      
+    }
+    .SelectValue{
+       position: absolute;
+       top: 50%;
+       transform: translateY(-50%);
+       width: calc(100% - 20px);
+       z-index: 0;
+    }
+    .SelectLabel{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        white-space: nowrap;
+        overflow:hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+    }
+}
+
+.SelectValueItem{
+    border: solid 1px #BFDEFF;
+    background-color: #F0F8FF;
+    display: flex;   
+    border-radius: 2px;   
+    .SelectLabel{
+        padding: 5px;
+    }
+    .triggerUnSelect{
+        padding-left: 5px;
+        padding-right: 5px;
+        opacity: 0.5;
+        &:hover{
+            opacity: 1;
+            color: orangered;
+        }
+    }    
+    &.hover{
+        background-color: #CCE7FF;
+    }
+}
+
+.Select.multiple {
+    .SelectValues{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 2px 5px;    
+        padding-right: 10px;  
+        min-height: 33.2px;  
+    }
+
+    .SelectValueItem .SelectLabel{
+        padding-bottom: 4px;
+    }
+
+    .SelectInput{
+        min-width: 2px;  
+        flex: auto;   
+        padding-top: 0.3em;
+        padding-bottom: 0.27em;
+    }
+
+    .SelectValueItem,.SelectInput{
+        position: relative;
+        z-index: 1;        
+    }
+
+    .SelectValue.placeholder {
+        display: block;
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 0;
+        .SelectAria{
+            width: 0;
+        }
+        .SelectLabel{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+.Select.multiple.focus{
+    .SelectValues{
+        padding-bottom: 2px;
+    }
+}
+
+.Select.focus{     
+    z-index: 2; 
+    border:$select-focus-border-type $select-focus-border-width $select-focus-border-color;
+    box-shadow: $select-boxshadow-offset-x $select-boxshadow-offset-y $select-boxshadow-blur-radius $select-boxshadow-spread-radius $select-boxshadow-color;    
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;    
+    .SelectArrow{
+        border-bottom: solid 1px $select-arrow-border-color;
+    }
+    .SelectDropDownLine{
+        display: block;         
+    }
+    .SelectDropDown{
+        display: block;
+        border-color: $select-focus-border-color;               
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+    .SelectArrow.SelectArrowDropDown span{
+        transform: rotate(180deg);
+    }
+}
+
+.Select.single.focus{
+    .SelectValue{
+        opacity: 0;
+    }
+}
+
+.Select.loading {
+    position: relative;
+    .SelectConta {
+        z-index: 0;
+    }
+
+    &::before,
+    &::after{
+        position: absolute;
+        overflow: hidden;
+        content: "\0020";
+        z-index: 1;
+    }
+    &::after{
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;        
+    }
+    &::before{
+        position: absolute;
+        overflow: hidden;
+        content: "\0020";
+        width: 16px;
+        height: 16px;
+        border-radius: 100%;
+        border: 2px solid transparent;
+        border-top-color: #FF4500;   
+        border-bottom-color: #FF4500;     
+        top: 50%;
+        left: 6px;
+        margin-top: -8px;            
+        animation: select-spin 0.5s linear infinite;
+    }    
+}
+
+@keyframes select-spin {
+  0% { 
+    transform: rotate(0deg);
+  }
+  100% {   
+    transform: rotate(360deg);
+    
+  }
+}

@@ -1,22 +1,20 @@
 {
   "name": "intoy-chosen",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "js chosen",
   "main": "dist/chosen.js",
   "typings": "dist/chosen.d.ts",
   "author": "intoy",
   "license": "MIT",
   "scripts": {
-    "dts": "node wp.dts.js",
     "g": "webpack --mode development",
-    "b": "webpack --mode production && yarn dts"
+    "b": "webpack --mode production"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/parser": "^7.16.4",
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-react": "^7.16.0",
-    "@stavalfi/babel-plugin-module-resolver-loader": "^1.4.0",
     "@types/node": "^16.11.11",
     "@types/react": "^17.0.37",
     "@types/webpack": "^5.28.0",
@@ -25,6 +23,7 @@
     "terser-webpack-plugin": "^5.2.5",
     "ts-loader": "^9.2.6",
     "typescript": "^4.5.2",
+    "typescript-declaration-webpack-plugin": "^0.2.2",
     "webpack": "^5.64.4",
     "webpack-cli": "^4.9.1"
   },

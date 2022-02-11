@@ -775,7 +775,20 @@ class Chosen<P extends IChosenProps, S extends IChosenState> extends React.Compo
                             </div>
                         </div>
                         <div className="SelectArrows">
-                            <a className={"SelectArrow SelectUnDropDown "+((!this.multiple && this.selectValues.length>0)?"show":"hidden")} onClick={e=>this.onUnSelect(this.values[0],this.focused)}><span>&#10006;</span></a>
+                            <a className={"SelectArrow SelectUnDropDown "+((!this.multiple && this.selectValues.length>0)?"show":"hidden")} onClick={e=>this.onUnSelect(this.values[0],this.focused)}>
+                                <span>
+                                    <svg version="1.1" id="Layer_1" 
+                                        xmlns="http://www.w3.org/2000/svg" 
+                                        xmlnsXlink="http://www.w3.org/1999/xlink" 
+                                        xmlSpace="preserve"
+                                        x="0px" y="0px"
+                                        width="0.106661in" height="0.106661in" viewBox="0 0 106.66 106.66" enable-background="new 0 0 64 64">
+                                        <g id="Layer_x0020_1">
+                                            <path stroke="red" strokeWidth={10} strokeMiterlimit={2.613} className="fil0 str0" d="M85.15 21.51l-63.64 63.64m63.64 0l-63.64 -63.64" />
+                                        </g>
+                                    </svg>
+                                </span>
+                            </a>
                             <a ref={nodeSADD=>this.nodeSADD=nodeSADD} className="SelectArrow SelectArrowDropDown" onClick={this.onToggleDropDown}><span>&#9662;</span></a>
                         </div>
                     </div>

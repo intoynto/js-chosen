@@ -1,6 +1,6 @@
 {
   "name": "intoy-chosen",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "js chosen",
   "main": "dist/chosen.js",
   "typings": "dist/chosen.d.ts",
